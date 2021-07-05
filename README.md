@@ -159,7 +159,9 @@ env:
 ```
 设置的环境变量，node中也可以访问到，通过`process.env.GOOGLE_ANALYTICS_GA`的方式即可。
 
-此外，考虑到安全性，建议限制可执行的action。路径：Settings -> Actions -> Allow select actions (输入允许执行的action，逗号分隔，此处添加的是CI/CD脚本中使用的action)
+此外，考虑到安全性，建议限制可执行的action。路径：Settings -> Actions -> Allow select actions (输入允许执行的action，逗号分隔，此处添加的是CI/CD脚本中使用的action)。
+
+根据最小权限的原则，修改action中的Workflow permissions，选择Read repository contents permission即可。路径：Settings -> Actions -> Workflow permissions。
 
 ## Private Repo
 私有仓库理论上，如果不会随意分享项目，一些配置KEY可以写到项目中。为了保持统一，此处仍然通过环境变量获取。配置路径：Settings -> Secrets。
@@ -167,3 +169,5 @@ env:
 私有仓库，为了有访问artifacts的权限，需要生成Personal access token，操作路径：头像 -> Settings -> Developer settings -> Personal access tokens。此处需要注意的是token拥有scopes的勾选，因为要执行action，所以workflow要勾选。
 
 私有仓库的Actions permissions也和公有仓库有所不同。私有仓库Actions permissions的设置路径：Settings -> Actions -> Actions permissions。推荐选择Allow select actions，并勾选Allow actions created by GitHub。
+
+根据最小权限的原则，修改action中的Workflow permissions，选择Read repository contents permission即可。路径：Settings -> Actions -> Workflow permissions。
